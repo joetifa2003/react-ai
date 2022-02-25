@@ -1,17 +1,17 @@
 import { useRef, useState } from "react";
 
 const Home = () => {
-    const imageRef = useRef(null);
-    const [imageUrl, setImageUrl] = useState(null);
+    const imageRef = useRef(null); // ref to image tag
+    const [imageUrl, setImageUrl] = useState(null); // local url to display image
     const [isLoading, setIsLoading] = useState(false);
     const [results, setResults] = useState([]);
 
     const startModel = async () => {
         setIsLoading(true);
 
-        const ml5 = await import("ml5");
-        const classifier = await ml5.imageClassifier("MobileNet");
-        const results = await classifier.classify(imageRef.current);
+        const ml5 = await import("ml5"); // dynamically importing ml5 client side only
+        const classifier = await ml5.imageClassifier("MobileNet"); // loading the model
+        const results = await classifier.classify(imageRef.current); // classifying the image by the image ref
         setResults(results);
 
         setIsLoading(false);
@@ -19,7 +19,7 @@ const Home = () => {
 
     const onFileChange = (e) => {
         const file = e.target.files[0];
-        const fileUrl = URL.createObjectURL(file);
+        const fileUrl = URL.createObjectURL(file); // create a local url to the file
         setImageUrl(fileUrl);
     };
 
