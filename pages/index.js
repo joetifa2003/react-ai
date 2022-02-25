@@ -43,7 +43,9 @@ const Home = () => {
                         Start
                     </button>
                 )}
-                {isLoading && <div>Loading...</div>}
+                {isLoading && (
+                    <div className="mt-8 text-center font-bold">Loading...</div>
+                )}
 
                 {results.length > 0 && (
                     <table class="table-auto mt-8">
