@@ -44,15 +44,26 @@ const Home = () => {
                     </button>
                 )}
                 {isLoading && <div>Loading...</div>}
+
                 {results.length > 0 && (
-                    <div className="mt-4">
-                        {results.map((result) => (
-                            <div key={result.label}>
-                                {result.label}:{" "}
-                                {(result.confidence * 100).toFixed(1)}%
-                            </div>
-                        ))}
-                    </div>
+                    <table class="table-auto mt-8">
+                        <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {results.map((result) => (
+                                <tr>
+                                    <td>{result.label}</td>
+                                    <td>
+                                        {(result.confidence * 100).toFixed(1)}%
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 )}
             </div>
         </div>

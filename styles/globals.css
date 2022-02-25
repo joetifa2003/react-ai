@@ -7,3 +7,8 @@ body,
 #__next {
     @apply w-full h-full bg-gray-900 text-gray-200;
 }
+
+td,
+th {
+    @apply border border-slate-900 font-bold text-xl;
+}
